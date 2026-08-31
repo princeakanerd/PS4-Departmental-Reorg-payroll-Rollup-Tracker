@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Departmental Reorg Payroll Rollup Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Departmental Reorg Payroll Rollup Tracker</h1>
+    <div class="actions">
+      <button id="btn-load" class="primary">Load department (12)</button>
+      <button id="btn-solo">Load solo department (1)</button>
+      <button id="btn-broken">Load invalid department</button>
+      <button id="btn-reset">Reset</button>
+    </div>
+  </header>
+
+  <p id="banner" class="banner" hidden></p>
+
+  <main id="workspace" hidden>
+    <section class="panel cards">
+      <h2>Team totals</h2>
+      <div id="cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Reporting tree</h2>
+      <p class="legend">
+        <span class="key moved">▲ moved subtree</span>
+        <span class="key changed">● team totals changed</span>
+        <span class="key selected">▸ selected</span>
+      </p>
+      <div id="tree" class="tree"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Selected employee</h2>
+      <div id="detail"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Transfer</h2>
+      <div class="controls">
+        <label>Move <select id="sel-employee"></select></label>
+        <label>under <select id="sel-manager"></select></label>
+        <button id="btn-transfer" class="primary">Apply transfer</button>
+      </div>
+      <div class="presets">
+        <button id="btn-demo-valid">Documented transfer: LEAD_CV &rarr; LABM</button>
+        <button id="btn-demo-cycle">Documented cycle: PGM &rarr; RA_NAIR</button>
+        <button id="btn-demo-root">Move the head: DHEAD &rarr; LABM</button>
+      </div>
+      <p id="transfer-msg" class="msg" hidden></p>
+    </section>
+
+    <section class="panel">
+      <h2>Transfer log <span class="muted">&mdash; every attempt, accepted and rejected</span></h2>
+      <div id="attempts"><p class="muted">No transfers attempted yet.</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>Employees <span class="muted">(source order)</span></h2>
+      <table id="table"></table>
+    </section>
+  </main>
+
+  <script type="module" src="src/ui/app.js"></script>
+</body>
+</html>
